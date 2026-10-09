@@ -38,10 +38,26 @@ function addLetterGrade(data) {
     return data;
 }
 
+function calculateAverage(data) {
+    let sum = 0;
+    for (let i = 0; i < data.length; i++) {
+        sum += data[i].score;
+    }
+    return sum / data.length;
+}
+
+function filterFailed(data, passScore) {
+    return data
+        .filter(s => s.score < passScore)
+        .map(s => s.name);
+}
+
+console.log(calculateAverage(grades));
 
 console.log("Лучший студент:", findTopStudents(grades));
-
 addLetterGrade(grades);
+
+console.log(filterFailed(grades, 60));
 
 console.log("Массив после добавления буквенных оценок:");
 console.log(grades);
